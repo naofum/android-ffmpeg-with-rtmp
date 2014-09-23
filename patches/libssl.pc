@@ -1,0 +1,14 @@
+prefix=/Users/Guest/Development/android-ffmpeg-with-rtmp/src/openssl-android/
+exec_prefix=${prefix}
+libdir=/Users/Guest/Development/android-ffmpeg-with-rtmp/src/openssl-android/libs
+incdir=${prefix}/include
+
+Name: libssl
+Description: SSL implementation
+Version: 1.0.0
+Requires: 
+URL: 
+Libs: -L${libdir} -lssl -lcrypto 
+Libs.private: 
+Cflags: -I${incdir}
+

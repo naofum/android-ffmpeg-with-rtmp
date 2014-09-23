@@ -1,0 +1,11 @@
+--- util.h.org	2011-05-08 01:05:17.000000000 +0900
++++ util.h	2014-09-23 12:03:40.000000000 +0900
+@@ -571,7 +571,7 @@
+ 
+ /* log/log10 approximations */
+     extern void init_log_table(void);
+-    extern ieee754_float32_t fast_log2(ieee754_float32_t x);
++    extern float fast_log2(float x);
+ 
+     int     isResamplingNecessary(SessionConfig_t const* cfg);
+ 

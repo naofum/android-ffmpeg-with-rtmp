@@ -5,6 +5,7 @@ shopt -s extglob
 
 # import our build functions
 source _build_openssl.sh
+source _build_libmp3lame.sh
 source _build_librtmp.sh
 source _build_ffmpeg.sh
 
@@ -93,6 +94,7 @@ set -e  # fail hard on any error
 
 initialize
 build_openssl
+build_libmp3lame
 build_librtmp
 build_ffmpeg
 

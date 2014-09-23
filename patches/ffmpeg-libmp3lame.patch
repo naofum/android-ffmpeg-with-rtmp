@@ -1,0 +1,11 @@
+--- ../src/ffmpeg/libavcodec/libmp3lame.c.org	2014-08-17 02:20:07.000000000 +0900
++++ ../src/ffmpeg/libavcodec/libmp3lame.c	2014-09-23 15:36:40.000000000 +0900
+@@ -24,7 +24,7 @@
+  * Interface to libmp3lame for mp3 encoding.
+  */
+ 
+-#include <lame/lame.h>
++#include "lame.h"
+ 
+ #include "libavutil/channel_layout.h"
+ #include "libavutil/common.h"

@@ -1,6 +1,6 @@
---- configure.orig	2014-09-18 02:20:07.000000000 +0900
-+++ configure	2014-09-23 14:29:33.000000000 +0900
-@@ -2722,10 +2720,10 @@
+--- configure.orig	2014-09-23 02:20:07.000000000 +0900
++++ configure	2014-09-23 17:01:44.000000000 +0900
+@@ -2724,10 +2724,10 @@
  SLIBSUF=".so"
  SLIBNAME='$(SLIBPREF)$(FULLNAME)$(SLIBSUF)'
  SLIBNAME_WITH_VERSION='$(SLIBNAME).$(LIBVERSION)'
@@ -14,7 +14,7 @@
  
  asflags_filter=echo
  cflags_filter=echo
-@@ -4819,7 +4817,7 @@
+@@ -4821,7 +4821,7 @@
                                 done || die "ERROR: libgsm not found"; }
  enabled libilbc           && require libilbc ilbc.h WebRtcIlbcfix_InitDecode -lilbc
  enabled libmodplug        && require_pkg_config libmodplug libmodplug/modplug.h ModPlug_Load

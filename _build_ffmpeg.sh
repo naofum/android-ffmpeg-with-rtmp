@@ -20,12 +20,16 @@ function build_ffmpeg {
   # patch the configure script to use an Android-friendly versioning scheme
   patch -u configure ${patch_root}/ffmpeg-configure.patch >> ${build_log} 2>&1 || \
     die "Couldn't patch ffmpeg configure script!"
+  patch -u libavcodec/libmp3lame.c ${patch_root}/ffmpeg-libmp3lame.patch >> ${build_log} 2>&1 || \
+    die "Couldn't patch ffmpeg libmp3lame.c!"
+  cp ${src_root}/../patches/*.pc ${src_root}/openssl-android/
+  cp ${src_root}/lame-3.99.5/include/lame.h ${src_root}/ffmpeg/libavcodec
 
   # run the configure script
   prefix=${src_root}/ffmpeg/android/arm
   addi_cflags="-marm"
   addi_ldflags=""
-  export PKG_CONFIG_PATH="${src_root}/openssl-android:${src_root}/rtmpdump/librtmp"
+  export PKG_CONFIG_PATH="${src_root}/openssl-android:${src_root}/rtmpdump/librtmp:${src_root}/lame-3.99.5/libmp3lame"
   ./configure \
     --prefix=${prefix} \
     --enable-shared \
@@ -40,10 +44,12 @@ function build_ffmpeg {
     --arch=arm \
     --enable-cross-compile \
     --enable-librtmp \
+    --enable-openssl \
+    --enable-libmp3lame \
     --enable-decoder=h264 \
     --sysroot=${SYSROOT} \
     --extra-cflags="-Os -fpic ${addi_cflags}" \
-    --extra-ldflags="-L${src_root}/openssl-android/libs/armeabi ${addi_ldflags}" \
+    --extra-ldflags="-L${src_root}/openssl-android/libs/armeabi -L${src_root}/lame-3.99.5/libs/armeabi -lmp3lame -lm ${addi_ldflags}" \
     --pkg-config=$(which pkg-config) >> ${build_log} 2>&1 || die "Couldn't configure ffmpeg!"
 
   # build
